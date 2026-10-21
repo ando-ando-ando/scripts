@@ -31,7 +31,7 @@ class zfs_backup(object):
             self.zfs_list = output.split()
             self.zfs_list.remove("global")
             if self.zfs_list == []:
-                print "zoneがありません"
+                print "zone no thing"
             else:
                 for zone in self.zfs_list:
                     print ZFS_SNAPSHOT_CMD + zone + "@"  + TODAY + zone
@@ -52,7 +52,7 @@ def ftpput(host, username, password, putfile):
     try:
         _ftp = FTP(host, username, password)  # open(username, password)
         _ftp.cwd("/export/backup")            # cd /export/backup/
-        _file = open(putfile, 'rb')           # bin バイナリモード
+        _file = open(putfile, 'rb')           # bin Binary mode
         command = "STOR " + putfile
         _ftp.storbinary(command, _file)       # put putfile
         _file.close()
